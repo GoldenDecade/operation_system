@@ -1,0 +1,10 @@
+{
+  "expect":  [
+    {"value": 100, "label": "1天"},
+    {"value": 90, "label": "7天"}
+  ],
+  "fact": [
+    {"value": 80, "label": "1天"},
+    {"value": 60, "label": "7天"}
+  ]
+}

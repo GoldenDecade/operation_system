@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 100%;
+    background-color: #ccc;
+}
+.inner_frame_wrapper {
+    margin-left: 5%;
+    padding-top: 120px;
+
+}
+.inner_frame_content {
+    width: 100%;
+    background-color: #fff;
+}
+/*
+::-webkit-scrollbar {
+    width: 0;
+}*/
+h5.chart_title {
+    box-sizing: border-box;
+    padding-left: 10px;
+    width: 100%;
+    height: 24px;
+    font-size: 12px;
+    line-height: 24px;
+    background-color: #1ab7ff;
+}
+
+.chart_wrapper {
+    margin-bottom: 20px;
+    background-color: #cbcbcb;
+}
+h5.chart_title + div.chart {
+    height: 300px;
+}

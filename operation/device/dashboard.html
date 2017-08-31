@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../css/inner_frame.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <style>
+        .three-box {
+            width: 100%;
+            height: 340px;
+            position: relative;
+        }
+        .three-box > div {
+            display: inline-block;
+            border:1px solid lightgrey;
+            background: lightgrey;
+        }
+        .graphTitle {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            text-align: left;
+            background: #76a4bb;
+            height: 30px;
+            line-height: 30px;
+            padding-left: 20px;
+        }
+
+        .little-box {
+            position: absolute;
+            width: 32%;
+            z-index: 1;
+        }
+        .big-box {
+            position: absolute;
+            width: 60%;
+            z-index: 2017;
+            box-shadow: 7px 7px 20px;
+        }
+        .right-box {
+            margin-left: 40%;
+            box-shadow: -7px 7px  20px;
+        }
+        .big-chart {
+            height: 300px;
+            width:100%;
+        }
+        .max-icon {
+            position: absolute;
+            margin-left: 93%;
+            color:white;
+            font-size: 24px;
+        }
+        .little-chart {
+            width:100%;
+            height: 300px;  //  此处有争议
+        }
+        .right-i {
+            margin-left: 68%;
+        }
+        .fa-search-plus {
+            margin-top:-327px ;
+        }
+        .fa-search-minus {
+            margin-top: -327px;
+        }
+    </style>
+</head>
+<body>
+<div class="inner_frame_wrapper">
+    <div class="inner_frame_content">
+        <div class="three-box" >
+            <!--全球地图  每个国家存在的所有设备总量-->
+            <div class="little-box" >
+                <div class="graphTitle">在全球范围内所销售的设备总量</div>
+                <div class="little-chart" id="global_map"></div><i class="fa fa-search-plus  max-icon" aria-hidden="true"></i>
+            </div>
+            <!--每天全球的设备总量-->
+            <div class="little-box" style="margin-left:34%;">
+                <div class="graphTitle">在全球范围内所有设备DAU&DEU</div>
+                <div class="little-chart" id="global_dau_deu"></div><i class="fa fa-search-plus max-icon" aria-hidden="true"></i>
+            </div>
+            <!--每天全球设备的增长量-->
+            <div class="little-box right-i" >
+                <div class="graphTitle"  >在全球范围内每日的设备增长总量</div>
+                <div class="little-chart" id="global_dnu"></div><i class="fa fa-search-plus max-icon right" aria-hidden="true"></i>
+            </div>
+        </div>
+        <!--all kinds of devices-->
+        <div class="three-box" >
+            <!--speaker  tau&teu-->
+            <div class="little-box" >
+                <div class="graphTitle">speaker</div>
+                <div class="little-chart" id="speaker_total"></div><i class="fa fa-search-plus  max-icon" aria-hidden="true"></i>
+            </div>
+            <!--speaker  dau&deu-->
+            <div class="little-box" style="margin-left:34%;">
+                <div class="graphTitle">speaker在全球范围内所有设备DAU&DEU</div>
+                <div class="little-chart" id="speaker_daily"></div><i class="fa fa-search-plus max-icon" aria-hidden="true"></i>
+            </div>
+            <!--speaker  dnu-->
+            <div class="little-box right-i" >
+                <div class="graphTitle">speaker在全球范围内每日的设备增长总量</div>
+                <div class="little-chart" id="speaker_daily_new"></div><i class="fa fa-search-plus max-icon right" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/echarts/echarts.min.js"></script>
+<script src="../../js/echarts/world.js"></script>
+<script src="../../js/inner_iframe_width.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/commonJS.js"></script>
+<script>
+    $(function() {
+//        global
+        var global_map_chart = chartObj.global_map("global_map", "../../json/device/dashboard/global_map.json","设备总量")
+        var global_dnu_chart = chartObj.single_line("global_dnu", "../../json/device/dashboard/global_dnu.json","每日增长量")
+        var global_dau_deu_chart = chartObj.doubleLine("global_dau_deu","../../json/device/dashboard/global_dau.json","../../json/device/dashboard/global_deu.json","dau","deu")
+
+//        speaker 设备
+        var speaker_total_chart = chartObj.doubleLine("speaker_total","../../json/device/dashboard/speaker_tau.json","../../json/device/dashboard/speaker_teu.json","tau","teu")
+        var speaker_daily_chart = chartObj.doubleLine("speaker_daily","../../json/device/dashboard/speaker_dau.json","../../json/device/dashboard/speaker_deu.json","tau","teu")
+        var speaker_daily_new_chart = chartObj.single_line("speaker_daily_new","../../json/device/dashboard/speaker_dnu.json","每日增长量")
+
+        var chart_obj = {
+            global_map: global_map_chart,
+            global_dnu: global_dnu_chart,
+            global_dau_deu: global_dau_deu_chart,
+            speaker_total: speaker_total_chart,
+            speaker_daily: speaker_daily_chart,
+            speaker_daily_new: speaker_daily_new_chart
+        }
+        var current='', prev='',prevObj = null, prevObj_str;
+        $(".max-icon").on("click",function(obj){
+            current = $(this).prev('div')[0].id
+            if($('.fa-search-minus').length > 0 && ($('.fa-search-minus')[0] != $(this)[0])) {
+                $("#"+prev).removeClass('big-chart').addClass('little-chart')
+                $("#"+prev).parent().removeClass('big-box').addClass('little-box')
+                chart_obj[prev].resize()
+            }
+            obj = chart_obj[$(this).prev('div')[0].id]
+            if($(this).hasClass("fa-search-plus")){
+                prevObj = $.extend(true, {}, obj)
+                console.log(prevObj);
+                if($(this).hasClass("right")){
+                    $(this).parent().removeClass("right-i").addClass("right-box");
+                }else{
+                    $(".right").parent().removeClass("right-box").addClass("right-i");
+                }
+                $(this).removeClass("fa-search-plus").addClass("fa-search-minus");
+
+                $(".active").parent().removeClass("big-box").addClass("little-box");
+                $(".active").prev().removeClass("big-chart").addClass("little-chart");
+                $(".active").removeClass("fa-search-minus").addClass("fa-search-plus");
+                $(this).parent().removeClass("little-box").addClass("big-box");
+                $(this).prev().removeClass("little-chart").addClass("big-chart");
+                obj.resize()
+                $(".active").removeClass("active");
+                $(this).addClass("active");
+                prev = current
+                obj = null
+            }else{        //缩小
+                prevObj = $.extend(true, {}, obj)
+                if($(this).hasClass("right")){
+                    $(this).parent().removeClass("right-box").addClass("right-i");
+                }
+                $(this).removeClass("fa-search-minus").addClass("fa-search-plus");
+                $(this).parent().removeClass("big-box").addClass("little-box");
+                $(this).prev().removeClass("big-chart").addClass("little-chart");
+                $(this).removeClass("active");
+                $(".active").removeClass("active");
+                obj.resize()
+                prev = current
+                obj = null
+            }
+        })
+
+    })
+</script>
+</body>
+</html>

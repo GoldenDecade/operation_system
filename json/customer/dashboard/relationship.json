@@ -1,0 +1,16 @@
+[
+  {"category": 0,"label":"customer","value": 52, "source": "", "flag": 0},
+
+  {"category": 1,"label":"app","value": 30,"source": 0, "flag": 1},
+  {"category": 1,"label":"nlu","value": 20,"source": 0, "flag":2},
+  {"category": 1,"label":"blueTooth","value": 1,"source": 0, "flag":3},
+  {"category": 1,"label":"manual","value": 1,"source": 0, "flag":4},
+
+
+  {"category": 2,"label":"app_music","value": 18,"source": 1,"flag":5 },
+  {"category": 2,"label":"app_movie","value": 12,"source": 1,"flag":6 },
+
+  {"category": 2,"label":"nlu_news","value": 12,"source": 2,"flag":7 },
+  {"category": 2,"label":"nlu_music","value": 8,"source": 2,"flag":8 }
+
+]

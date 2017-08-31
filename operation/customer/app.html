@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../css/inner_frame.css">
+    <style>
+        .bind {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        #bind_minutes, #bind_success_ratio {
+            flex: 1;
+            width: 47%;
+        }
+
+
+        .mobile_system_app {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .mobile_system_app .chart_wrapper {
+            width: 32%;
+        }
+        .mobile_system_app .chart_wrapper .chart {
+            height: 300px;
+            width: 100%;
+            background-color: red;
+        }
+
+        #app_online_time {
+            width: 100%;
+        }
+        #app_online_time_chart {
+            width: 100%;
+            height: 300px;
+        }
+        #app_services_24hour_distribution {
+            width: 100%;
+        }
+        #app_services_24hour_distribution_chart {
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="inner_frame_wrapper">
+    <div class="inner_frame_content">
+        <div class="bind">
+            <div id="bind_minutes" class="chart_wrapper">
+                <h5 class="chart_title">Bind Times</h5>
+                <div id="bind_minutes_chart" class="chart"></div>
+            </div>
+            <div id="bind_success_ratio" class="chart_wrapper">
+                <h5 class="chart_title"></h5>
+                <div id="bind_success_ratio_chart" class="chart"></div>
+            </div>
+        </div>
+        <div class="mobile_system_app ">
+            <div id="phoneSystem_phoneVersion" class="chart_wrapper">
+                <h5 class="chart_title"></h5>
+                <div id="phoneSystem_phoneVersion_chart" class="chart"></div>
+            </div>
+            <div id="android_AppVersion" class="chart_wrapper">
+                <h5 class="chart_title"></h5>
+                <div id="android_AppVersion_chart" class="chart"></div>
+            </div>
+            <div id="ios_AppVersion" class="chart_wrapper">
+                <h5 class="chart_title"></h5>
+                <div id="ios_AppVersion_chart" class="chart"></div>
+            </div>
+        </div>
+
+        <div id="app_online_time" class="chart_wrapper">
+            <h5 class="chart_title"></h5>
+            <div id="app_online_time_chart" class="chart"></div>
+        </div>
+        <div id="app_services_24hour_distribution" class="chart_wrapper">
+            <h5 class="chart_title"></h5>
+            <div id="app_services_24hour_distribution_chart" class="chart"></div>
+        </div>
+        <!--先不做这个  意义感觉不大-->
+        <!--<div id="app_online_24hour_distribution" class="chart_wrapper">
+            <h5 class="chart_title"></h5>
+            <div id="app_online_24hour_distribution_chart" class="chart"></div>
+        </div>-->
+    </div>
+</div>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/echarts/echarts.min.js"></script>
+<script src="../../js/inner_iframe_width.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/commonJS.js"></script>
+<script>
+    $(function() {
+
+        //  bind_minutes_chart  单线图
+        chartObj.single_line("bind_minutes_chart", "../../json/customer/app/bind_minutes.json", "Bind-Time", "{a} <br/>{b}minutes : {c}")
+        //  bind_success_ratio_chart   每日绑定成功率
+        chartObj.bind_success_ratio("bind_success_ratio_chart", "../../json/customer/app/bind_success_ratio_chart.json", "Success Ratio")
+        //   phoneSystem_phoneVersion_chart  双环图
+        chartObj.double_ring("phoneSystem_phoneVersion_chart", "../../json/customer/app/phoneSystem_phoneVersion_chart.json", "Mobile phone system ratio")
+        //   android_AppVersion_chart   安卓手机中APP不同版本所占比例
+        chartObj.single_pie("android_AppVersion_chart","../../json/customer/app/android_AppVersion_chart.json", "App version ratio in Android")
+        //   ios_AppVersion_chart   ios手机中APP不同版本所占比例
+        chartObj.single_pie("ios_AppVersion_chart","../../json/customer/app/ios_AppVersion_chart.json", "App version ratio in IOS")
+
+        //   app_online_time_chart   APP每日平均在线时长图   带有缩放的单线图
+        chartObj.single_line_dataZoom("app_online_time_chart", "../../json/customer/app/app_online_time_chart.json", "App daily average online time")
+
+        //   app_services_24hour_distribution_chart  app所有服务24小时分布堆积图
+        chartObj.stack_line("app_services_24hour_distribution_chart","../../json/customer/app/app_services_24hour_distribution_chart.json" )
+
+
+
+    })
+</script>
+</body>
+</html>

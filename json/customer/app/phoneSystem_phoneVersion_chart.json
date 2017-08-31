@@ -1,0 +1,42 @@
+{
+  "inner": [
+    {
+      "label": "Android",
+      "value": 945
+    },
+    {
+      "label": "IOS",
+      "value": 620
+    }
+  ],
+  "outer": [
+    {
+      "value": 335,
+      "label": "联想ZUK"
+    },
+    {
+      "value": 310,
+      "label": "小米MIUI"
+    },
+    {
+      "value": 300,
+      "label": "魅族Flyme"
+    },
+    {
+      "value": 220,
+      "label": "IOS10"
+    },
+    {
+      "value": 180,
+      "label": "IOS8"
+    },
+    {
+      "value": 120,
+      "label": "IOS9"
+    },
+    {
+      "value": 100,
+      "label": "IOS7"
+    }
+  ]
+}

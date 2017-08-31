@@ -1,0 +1,22 @@
+[
+  {"label": "物品查找", "value": 1},
+  {"label": "体育", "value": 2},
+  {"label": "会议", "value": 4},
+  {"label": "up", "value": 17},
+  {"label": "交通打车", "value": 24},
+  {"label": "1物品查找", "value": 11},
+  {"label": "1体育", "value": 12},
+  {"label": "1会议", "value": 14},
+  {"label": "1up", "value": 117},
+  {"label": "1交通打车", "value": 124},
+  {"label": "2物品查找", "value": 11},
+  {"label": "2体育", "value": 12},
+  {"label": "2会议", "value": 14},
+  {"label": "2up", "value": 117},
+  {"label": "2交通打车", "value": 124},
+  {"label": "3物品查找", "value": 11},
+  {"label": "3体育", "value": 12},
+  {"label": "3会议", "value": 14},
+  {"label": "3up", "value": 117},
+  {"label": "3交通打车", "value": 124}
+]

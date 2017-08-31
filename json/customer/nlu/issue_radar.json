@@ -1,0 +1,499 @@
+{
+  "decision": [
+    [
+      "用户意图不明",
+      7192
+    ],
+    [
+      "领域错误",
+      1783
+    ],
+    [
+      "NER错误",
+      617
+    ],
+    [
+      "无反馈",
+      1288
+    ],
+    [
+      "音频资源不匹配",
+      356
+    ],
+    [
+      "服务回复错误",
+      1660
+    ],
+    [
+      "领域未支持",
+      490
+    ]
+  ],
+  "domain": [
+    {
+      "label": "音乐",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 2983
+        },
+        {
+          "label": "领域错误",
+          "value": 673
+        },
+        {
+          "label": "NER错误",
+          "value": 617
+        },
+        {
+          "label": "无反馈",
+          "value": 1288
+        },
+        {
+          "label": "音频资源不匹配",
+          "value": 356
+        },
+        {
+          "label": "服务回复错误",
+          "value": 31
+        },
+        {
+          "label": "领域未支持",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "label": "聊天",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 7192
+        },
+        {
+          "label": "领域错误",
+          "value": 1561
+        },
+        {
+          "label": "NER错误",
+          "value": 21
+        },
+        {
+          "label": "无反馈",
+          "value": 64
+        },
+        {
+          "label": "音频资源不匹配",
+          "value": 2
+        },
+        {
+          "label": "服务回复错误",
+          "value": 1660
+        },
+        {
+          "label": "领域未支持",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "label": "电台",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 755
+        },
+        {
+          "label": "领域错误",
+          "value": 1783
+        },
+        {
+          "label": "NER错误",
+          "value": 123
+        },
+        {
+          "label": "无反馈",
+          "value": 228
+        },
+        {
+          "label": "音频资源不匹配",
+          "value": 122
+        },
+        {
+          "label": "服务回复错误",
+          "value": 11
+        },
+        {
+          "label": "领域未支持",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "label": "智能家居",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 9
+        },
+        {
+          "label": "领域错误",
+          "value": 179
+        },
+        {
+          "label": "领域未支持",
+          "value": 490
+        }
+      ]
+    },
+    {
+      "label": "故事",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 12
+        },
+        {
+          "label": "领域错误",
+          "value": 45
+        },
+        {
+          "label": "领域未支持",
+          "value": 256
+        }
+      ]
+    },
+    {
+      "label": "电影搜索",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 22
+        },
+        {
+          "label": "领域错误",
+          "value": 27
+        },
+        {
+          "label": "NER错误",
+          "value": 1
+        },
+        {
+          "label": "无反馈",
+          "value": 1
+        },
+        {
+          "label": "领域未支持",
+          "value": 295
+        }
+      ]
+    },
+    {
+      "label": "天气",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 62
+        },
+        {
+          "label": "领域错误",
+          "value": 18
+        },
+        {
+          "label": "NER错误",
+          "value": 43
+        },
+        {
+          "label": "服务回复错误",
+          "value": 110
+        }
+      ]
+    },
+    {
+      "label": "交通打车",
+      "value": [
+        {
+          "label": "领域错误",
+          "value": 1
+        },
+        {
+          "label": "领域未支持",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "label": "新闻",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 101
+        },
+        {
+          "label": "领域错误",
+          "value": 58
+        },
+        {
+          "label": "NER错误",
+          "value": 16
+        },
+        {
+          "label": "服务回复错误",
+          "value": 27
+        },
+        {
+          "label": "领域未支持",
+          "value": 11
+        }
+      ]
+    },
+    {
+      "label": "关于",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 15
+        },
+        {
+          "label": "领域错误",
+          "value": 33
+        }
+      ]
+    },
+    {
+      "label": "打车",
+      "value": [
+        {
+          "label": "无反馈",
+          "value": 6
+        },
+        {
+          "label": "领域未支持",
+          "value": 16
+        }
+      ]
+    },
+    {
+      "label": "计算器",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 5
+        },
+        {
+          "label": "领域错误",
+          "value": 3
+        },
+        {
+          "label": "领域未支持",
+          "value": 12
+        }
+      ]
+    },
+    {
+      "label": "语音留言",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 11
+        },
+        {
+          "label": "领域错误",
+          "value": 10
+        },
+        {
+          "label": "无反馈",
+          "value": 1
+        },
+        {
+          "label": "领域未支持",
+          "value": 85
+        }
+      ]
+    },
+    {
+      "label": "中控",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 62
+        },
+        {
+          "label": "领域错误",
+          "value": 3
+        },
+        {
+          "label": "无反馈",
+          "value": 1
+        },
+        {
+          "label": "音频资源不匹配",
+          "value": 1
+        },
+        {
+          "label": "服务回复错误",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "label": "路况",
+      "value": [
+        {
+          "label": "领域未支持",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "label": "日历",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 28
+        },
+        {
+          "label": "领域错误",
+          "value": 26
+        },
+        {
+          "label": "无反馈",
+          "value": 5
+        },
+        {
+          "label": "服务回复错误",
+          "value": 3
+        },
+        {
+          "label": "领域未支持",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "label": "菜谱",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 2
+        },
+        {
+          "label": "领域错误",
+          "value": 4
+        },
+        {
+          "label": "领域未支持",
+          "value": 84
+        }
+      ]
+    },
+    {
+      "label": "提醒",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 13
+        },
+        {
+          "label": "领域错误",
+          "value": 5
+        },
+        {
+          "label": "NER错误",
+          "value": 1
+        },
+        {
+          "label": "无反馈",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "label": "古诗",
+      "value": [
+        {
+          "label": "领域未支持",
+          "value": 51
+        }
+      ]
+    },
+    {
+      "label": "股票",
+      "value": [
+        {
+          "label": "领域错误",
+          "value": 4
+        },
+        {
+          "label": "领域未支持",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "label": "购物",
+      "value": [
+        {
+          "label": "用户意图不明",
+          "value": 1
+        },
+        {
+          "label": "领域错误",
+          "value": 1
+        },
+        {
+          "label": "无反馈",
+          "value": 1
+        },
+        {
+          "label": "领域未支持",
+          "value": 12
+        }
+      ]
+    },
+    {
+      "label": "笑话",
+      "value": [
+        {
+          "label": "NER错误",
+          "value": 1
+        },
+        {
+          "label": "无反馈",
+          "value": 31
+        }
+      ]
+    },
+    {
+      "label": "翻译",
+      "value": [
+        {
+          "label": "领域错误",
+          "value": 1
+        },
+        {
+          "label": "领域未支持",
+          "value": 25
+        }
+      ]
+    },
+    {
+      "label": "音箱控制",
+      "value": [
+        {
+          "label": "领域未支持",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "label": "唤醒定制",
+      "value": [
+        {
+          "label": "领域未支持",
+          "value": 3
+        }
+      ]
+    }
+  ]
+}

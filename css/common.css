@@ -1,0 +1,38 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #f1f1f1;
+}
+
+.wrapper-box{
+    width: calc(90% + 7px);
+    margin-left: 5%;
+    height:auto;
+    border: 1px solid #d8d8da;
+    background: rgb(247, 247, 247);
+    margin-bottom: 50px;
+}
+.wrapper {
+    padding: 30px 2% 20px;
+}
+.graphTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    text-align: left;
+    background: #306984;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 20px;
+}
+
+
+.chart_bg{
+    border: 1px solid lightgrey;
+}
+
+.sort_p{
+    height: 250px;
+}
+

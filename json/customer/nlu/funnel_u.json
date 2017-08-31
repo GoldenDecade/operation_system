@@ -1,0 +1,10 @@
+{
+  "expect":  [
+    {"value": 100, "label": "AU"},
+    {"value": 90, "label": "EU"}
+  ],
+  "fact": [
+    {"value": 80, "label": "AU"},
+    {"value": 60, "label": "EU"}
+  ]
+}

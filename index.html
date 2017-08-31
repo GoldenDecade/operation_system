@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/bread_crumb.css">
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        .top{
+            background:#292929;
+            height: 35px;
+        }
+        .logo{
+            display: inline-block;
+            font-size: 24px;
+            color:#c9c7ca;
+            margin-left: 5%;
+
+        }
+        .welcome{
+            color: #d2dce7;
+            display: inline-block;
+            float:right;
+            margin-right: 5%;
+            line-height: 35px;
+            clear: both;
+        }
+
+        #iframe_box {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            background-color: #f1f1f1;
+            border: 1px solid green;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="top">
+        <div class="logo">Smart Home</div>
+        <div class="welcome"><span>welcome , operation@lenovo.com ! </span><i class="fa fa-sort-desc" aria-hidden="true"></i></div>
+    </div>
+    <div class="menu-box">
+        <div class="one-menu" id="one_menu">
+            <div class="menu-wrapper"></div>
+            <div class="device-wrapper" style="display: none;">
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+        </div>
+    </div>
+    <div class="crumb_wrapper">
+        <div id="bread_crumb_wrapper">
+        </div>
+    </div>
+
+</header>
+    <iframe id="iframe_box" src="operation/overview.html" frameborder="0"></iframe>
+<script src="./js/jquery.min.js"></script>
+<script>
+    $(function() {
+        //一级菜单的数据
+        var first_menu = [{name: 'overview', path: 'operation/overview.html'},
+            {name: 'customer',
+                second_menu: [{name: 'dashboard', path:'operation/customer/dashboard.html'},
+                    {name: 'app', path:'operation/customer/app.html'},
+                    {name: 'nlu', path:'operation/customer/nlu.html'}]
+            },
+            {name: 'device'},
+            {name: 'config',second_menu: [
+                {name: 'hub info', path: 'operation/geography/Chinese'},
+                {name: 'user info', path: 'operation/geography/Oversea'}
+            ]}
+        ];
+        // 菜单对应path 对象
+        var menu_path = {
+            'overview': 'operation/overview.html',
+            'customer': 'operation/customer/dashboard.html',
+            'device': 'operation/device/dashboard.html'
+        };
+
+        //二级菜单的数据
+        var second_menu = [
+            {"region": 'dashboard', path:'operation/device/dashboard.html'},
+            {   region: 'chinese',
+                device: [
+                    {name: 'speaker1', path:'operation/device/chinese/speaker1.html', desc: '联想超值', imgUrl: './img/speaker.jpg'},
+                    {name: 'harman1', path:'operation/device/chinese/harman1.html', desc: '哈曼高级音箱', imgUrl: './img/harman.png'},
+                    {name: 'hcc1', path:'operation/device/chinese/hcc1.html', desc: '存储助手HCC', imgUrl: './img/hcc.jpg'},
+                    {name: 'speaker2', path:'operation/device/chinese/speaker2.html', desc: '联想超值音箱', imgUrl: './img/speaker.jpg'},
+                    {name: 'harman2', path:'operation/device/chinese/harman2.html', desc: '哈曼高级音箱', imgUrl: './img/harman.png'},
+                    {name: 'hcc2', path:'operation/device/chinese/hcc2.html', desc: '存储助手HCC', imgUrl: './img/hcc.jpg'},
+                    {name: 'speaker3', path:'operation/device/chinese/speaker3.html', desc: '联想超值音箱', imgUrl: './img/speaker.jpg'},
+                    {name: 'harman3', path:'operation/device/chinese/harman3.html', desc: '哈曼高级音箱', imgUrl: './img/harman.png'},
+                    {name: 'hcc3', path:'operation/device/chinese/hcc3.html', desc: '存储助手HCC', imgUrl: './img/hcc.jpg'},
+                ]
+            },
+            {   region: 'oversea',
+                device: [
+                    {name: 'hcc1', path:'operation/device/oversea/hcc1.html', desc: '存储助手HCC',imgUrl:'./img/hcc.jpg'},
+                    {name: 'speaker1', path:'operation/device/oversea/speaker1.html', desc: '联想超值音箱',imgUrl:'./img/speaker.jpg'},
+                    {name: 'harman1', path:'operation/device/oversea/harman1.html', desc: '哈曼高级音箱',imgUrl:'./img/harman.png'},
+                    {name: 'speaker2', path:'operation/device/oversea/speaker2.html', desc: '联想超值音箱',imgUrl:'./img/speaker.jpg'},
+                    {name: 'hcc2', path:'operation/device/oversea/hcc2.html', desc: '存储助手HCC',imgUrl:'./img/hcc.jpg'},
+                    {name: 'harman2', path:'operation/device/oversea/harman2.html', desc: '哈曼高级音箱',imgUrl:'./img/harman.png'},
+                    {name: 'speaker3', path:'operation/device/oversea/speaker3.html', desc: '联想超值音箱',imgUrl:'./img/speaker.jpg'},
+                    {name: 'harman3', path:'operation/device/oversea/harman3.html', desc: '哈曼高级音箱',imgUrl:'./img/harman.png'},
+                    {name: 'hcc3', path:'operation/device/oversea/hcc3.html', desc: '存储助手HCC',imgUrl:'./img/hcc.jpg'},
+                ]
+            },
+        ];
+        //  breadcrumb 数据变量
+        var bread_crumb = [];
+        var icons = {
+            'overview': 'fa fa-home',
+            'customer': 'fa fa-user',
+            'device': 'fa fa-list',
+            'config': 'fa fa-gear',
+            'geography': 'fa fa-map-pin',
+            'dashboard': 'fa fa-dashboard'
+        };
+
+//        循环菜单 开始
+        var first_menu_html = '';
+        first_menu.forEach(function(elem, index) {
+            if(elem.path) {
+                if(elem.name == 'overview') {
+                    first_menu_html += '<div class="menu active" ><span class="to_iframe"  data-href="'+elem.path+'">'+elem.name+'</span></div>';
+                }else {
+                    first_menu_html += '<div class="menu" ><span class="to_iframe"  data-href="'+elem.path+'">'+elem.name+'</span></div>';
+                }
+            }else {
+                first_menu_html += '<div class="menu '+elem.name+'">'+elem.name;
+                if(elem.second_menu) {
+                    first_menu_html += '<ul class="sub_menu">';
+                    for(var i=0; i<elem.second_menu.length; i++) {
+                        first_menu_html += '<li><span class="to_iframe"  data-href="'+elem.second_menu[i].path+'">'+elem.second_menu[i].name+'</span></li>';
+                    }
+                    first_menu_html += '</ul>';
+                }
+                first_menu_html += '</div>';
+            }
+        });
+        $('.menu-wrapper').html(first_menu_html);
+
+        var second_menu_html_left = '', second_menu_html_right = '';
+        second_menu.forEach(function(elem, index) {
+            if(elem.path) {
+                second_menu_html_left += '<p class="region to_iframe" data-href="'+elem.path+'" id="'+elem.region+'">'+elem.region+'</p>';
+            }else {
+                second_menu_html_left += '<p class="region" id="'+elem.region+'">'+elem.region+'</p>';
+            }
+        });
+        second_menu.forEach(function(elem, index) {
+            if(!elem.device) {
+                second_menu_html_right += '<div class="right_desc line">对所有设备总体的简介。</div>'
+            }else{
+                second_menu_html_right += '<div class="'+elem.region+' second_menu"><ul class="line">';
+                elem.device.forEach(function(v, k) {
+                    second_menu_html_right += '<li class="single_device_wrapper">'+
+                            '<img src="'+v.imgUrl+'" width="80" height="80" alt="">'+
+                            '<p class="introduce"><span class="to_iframe" data-href="'+v.path+'">'+v.desc+'</span></p>'+
+                            '</li>';
+                });
+                second_menu_html_right += '</ul></div>';
+            }
+        });
+
+        $('.device-wrapper .left').html(second_menu_html_left);
+        $('.device-wrapper .right').html(second_menu_html_right);
+//        循环菜单  结束
+//        菜单注册事件
+        $('.menu').mouseenter(function() {
+            $('.menu').removeClass('active');
+            $(this).addClass('active');
+            if($('ul.sub_menu li', this).length) {
+                $('ul.sub_menu', this).show()
+            }
+            $('.device-wrapper').css({display: 'none'})
+        });
+        $('.menu').mouseleave(function() {
+            if($('ul.sub_menu li', this).length) {
+                $('ul.sub_menu', this).hide()
+            }
+        });
+        $('.device').mouseenter(function() {
+            $('.device-wrapper').show();
+            $('.device-wrapper .left .region').removeClass('activeRegion').eq(0).addClass('activeRegion')
+        });
+        $('#oversea').hover(function() {
+            $('.right_desc').css({display: 'none'});
+            $('.chinese.second_menu').css({height: 0});
+            $('.oversea.second_menu').css({height: 'auto'});
+            $('.device-wrapper .left .region').removeClass('activeRegion');
+            $(this).addClass('activeRegion')
+        });
+        $('#chinese').hover(function() {
+            $('.right_desc').css({display: 'none'});
+            $('.oversea.second_menu').css({height: 0});
+            $('.chinese.second_menu').css({height: 'auto'});
+            $('.device-wrapper .left .region').removeClass('activeRegion');
+            $(this).addClass('activeRegion');
+        });
+        $('.left > p.to_iframe').hover(function() {
+            $('.oversea.second_menu').css({height: 0});
+            $('.chinese.second_menu').css({height: 0});
+            $('.right_desc').css({display: 'block'});
+            $('.device-wrapper .left .region').removeClass('activeRegion');
+            $(this).addClass('activeRegion');
+        });
+        $('.device-wrapper').mouseleave(function() {
+            $('.device-wrapper').css({display: 'none'});
+            $('.oversea.second_menu').css({height: 0});
+            $('.chinese.second_menu').css({height: 0});
+            $('.right_desc').css({display: 'block'});
+        });
+        $('.right li span.to_iframe').on('click', function() {
+            $('.device-wrapper').hide();
+        });
+        $('span.to_iframe').on('click', function() {
+            var href = $(this).attr('data-href');
+            var arr = href.slice(0,-5).split('/');
+            bread_crumb = arr.slice(1);
+            var bread_crumb_html = '<span id="home" class="bread to_iframe single" data-href="operation/overview.html"><i class="fa fa-home" aria-hidden="true"></i>home</span>';
+            bread_crumb.forEach(function(elem, index) {
+                if(menu_path[elem]) {
+                    bread_crumb_html += '<span class="bread to_iframe single"  data-href="'+menu_path[elem]+'"><i class="'+icons[elem]+'" aria-hidden="true"></i>'+elem+'</span>';
+                }else {
+                    bread_crumb_html += '<span class="bread"><i class="'+icons[elem]+'" aria-hidden="true"></i>'+elem+'</span>';
+                }
+            });
+
+            $('#bread_crumb_wrapper').html(bread_crumb_html);
+            $('#iframe_box').attr('src', href);
+        });
+        $(document).on('click',".single", function() {
+            var href = $(this).attr('data-href');
+            var arr = href.slice(0,-5).split('/');
+            bread_crumb = arr.slice(1);
+            var bread_crumb_html = '<span id="home" class="bread to_iframe single" data-href="operation/overview.html"><i class="fa fa-home" aria-hidden="true"></i>home</span>';
+            bread_crumb_html += '<span class="bread"><i class="'+icons[bread_crumb[0]]+'" aria-hidden="true"></i>'+bread_crumb[0]+'</span>';
+            $('#bread_crumb_wrapper').html(bread_crumb_html);
+            $('#iframe_box').attr('src', href);
+        });
+        $('.left > p.to_iframe').on('click', function() {
+            var href = $(this).attr('data-href');
+            var arr = href.slice(0,-5).split('/');
+            bread_crumb = arr.slice(1);
+            var bread_crumb_html = '<span id="home" class="bread to_iframe single" data-href="operation/overview.html"><i class="fa fa-home" aria-hidden="true"></i>home</span>';
+            bread_crumb.forEach(function(elem, index) {
+                if(menu_path[elem]) {
+                    bread_crumb_html += '<span class="bread to_iframe single"  data-href="'+menu_path[elem]+'"><i class="'+icons[elem]+'" aria-hidden="true"></i>'+elem+'</span>';
+                }else {
+                    bread_crumb_html += '<span class="bread"><i class="'+icons[elem]+'" aria-hidden="true"></i>'+elem+'</span>';
+                }
+            });
+
+            $('#bread_crumb_wrapper').html(bread_crumb_html);
+            $('#iframe_box').attr('src', href);
+            $('.device-wrapper').hide();
+        })
+//        菜单事件结束
+//        初始化 breadcrumb 开始
+        var bread_crumb_html = '<span id="home" class="bread to_iframe single" data-href="operation/overview.html"><i class="fa fa-home" aria-hidden="true"></i>home</span>';
+        $('#bread_crumb_wrapper').html(bread_crumb_html);
+//         初始化  breadcrumb  结束
+
+    })
+
+</script>
+</body>
+</html>

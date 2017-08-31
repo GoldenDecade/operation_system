@@ -1,0 +1,31 @@
+[
+  {
+    "label": "dispatch",
+    "score": "5.0",
+    "data": [
+      {
+        "label": "Z0",
+        "value": "1.0000"
+      }
+    ]
+  },
+  {
+    "label": "中控",
+    "score": "5.0",
+    "data": [
+      {
+        "label": "Z0",
+        "value": "1.0000"
+      }
+    ]
+  },
+  {
+    "label": "体育",
+    "score": "1.0",
+    "data": [
+      {
+        "label": "G2",
+        "value": "1.0000"
+      }
+    ]
+  }]

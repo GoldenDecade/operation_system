@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../css/inner_frame.css">
+    <style>
+
+        .nlu_service_sort {
+            display: flex;
+            justify-content: space-between;
+        }
+        .nlu_service_sort > .chart {
+            width: 45%;
+            height: 300px;
+        }
+        #nlu_service_sort_bar {
+            background-color: pink;
+        }
+        #nlu_service_sort_pie {
+            background-color: red;
+        }
+        #nlu_service_sort_bar {
+            position: relative;
+        }
+        button.inner_flag {
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+        }
+        button.inner_flag {
+            -webkit-appearance: none;
+            box-sizing: border-box;
+            width: 62px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 12px;
+            text-align: center;
+            border-radius: 4px;
+            background-color: #5BC0DE;
+        }
+
+
+        .retention_rate {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        #retention_rate_day, #retention_rate_kpi {
+            width: 45%;
+            height: 300px;
+        }
+
+        .nlu_analysis {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        #nlu_analysis_correct, #nlu_analysis_nocorrect{
+            width: 45%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="inner_frame_wrapper">
+    <div class="inner_frame_content">
+        <div class="chart_wrapper">
+            <h5 class="chart_title">NLU use services sort</h5>
+            <div class="nlu_service_sort">
+                <!--排序柱状图-->
+                <div id="nlu_service_sort_bar" class="chart"></div>
+                <!--饼图-->
+                <div id="nlu_service_sort_pie" class="chart"></div>
+            </div>
+        </div>
+
+        <!--24小时堆积图-->
+        <div class="nlu_services_24hour_distribution chart_wrapper">
+            <h5 class="chart_title"></h5>
+            <div id="nlu_services_24hour_distribution_chart" class="chart"></div>
+        </div>
+
+        <!--用户留存率-->
+        <div class="chart_wrapper">
+            <h5 class="chart_title">User Retention Rate</h5>
+            <div class="retention_rate">
+                <div id="retention_rate_day" class="chart"></div>
+                <div id="retention_rate_kpi" class="chart"></div>
+            </div>
+        </div>
+        <!--满意度堆积图-->
+        <div class="nlu_services_satisfaction chart_wrapper">
+            <h5 class="chart_title"></h5>
+            <div id="nlu_services_satisfaction_chart" class="chart"></div>
+        </div>
+
+        <!--雷达图-->
+        <div class="chart_wrapper">
+            <h5 class="chart_title"></h5>
+            <div class="nlu_analysis">
+                <div id="nlu_analysis_correct"></div>
+                <div id="nlu_analysis_nocorrect"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/echarts/echarts.min.js"></script>
+<script src="../../js/inner_iframe_width.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/commonJS.js"></script>
+<script>
+    $(function() {
+        // nlu_service_sort_bar
+        chartObj.sort_bar("nlu_service_sort_bar", "../../json/customer/nlu/nlu_service_sort_bar.json","ratio",16,10)
+        // nlu_service_sort_pie
+        chartObj.single_pie("nlu_service_sort_pie", "../../json/customer/nlu/nlu_service_sort_bar.json","ratio")
+        // nlu_services_24hour_distribution_chart
+        chartObj.stack_line("nlu_services_24hour_distribution_chart",  "../../json/customer/nlu/nlu_services_24hour_distribution_chart.json")
+
+        // retention_rate_day
+        chartObj.funnel("retention_rate_day", "../../json/customer/nlu/funnel_day.json")
+        // retention_rate_kpi
+        chartObj.funnel("retention_rate_kpi", "../../json/customer/nlu/funnel_u.json")
+
+        // nlu_services_satisfaction_chart
+        chartObj.stack_line("nlu_services_satisfaction_chart", "../../json/customer/nlu/nlu_satisfaction.json")
+
+        // nlu_analysis_correct
+
+        chartObj.radar("nlu_analysis_correct", "../../json/customer/nlu/radar.json")
+        // nlu_analysis_nocorrect
+        chartObj.radar("nlu_analysis_nocorrect", "../../json/customer/nlu/issue_radar.json")
+    })
+</script>
+</body>
+</html>

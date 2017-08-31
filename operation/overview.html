@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/inner_frame.css">
+    <style>
+        #overview_box {
+            height: 1000px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="inner_frame_wrapper">
+    <div class="inner_frame_content">
+        <div id="overview_box">
+            overview
+        </div>
+    </div>
+</div>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/inner_iframe_width.js"></script>
+<script>
+    $(function() {
+        console.log($("html").parents());
+    })
+</script>
+
+</body>
+</html>

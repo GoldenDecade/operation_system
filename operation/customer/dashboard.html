@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../css/inner_frame.css">
+    <style>
+        #relation {
+            margin: 30px;
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+<div class="inner_frame_wrapper">
+    <div class="inner_frame_content">
+        <div id="relation"></div>
+    </div>
+</div>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/echarts/echarts.min.js"></script>
+<script src="../../js/inner_iframe_width.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/commonJS.js"></script>
+<script>
+    $(function() {
+        chartObj.relation("relation", "../../json/customer/dashboard/relationship.json")
+    });
+</script>
+</body>
+</html>
